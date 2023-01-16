@@ -3,6 +3,10 @@ import TaskItem from "./taskitem";
 
 class TaskList extends Component {
   render(){
+    var {tasks}= this.props;
+    var elementTasks = tasks.map((item, key) =>{
+        return <TaskItem item={item} id={key}/>
+    })
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <table className="table table-bordered table-hover">
@@ -20,6 +24,7 @@ class TaskList extends Component {
                     <td>
                         <input type="text" className="form-control" />
                     </td>
+                    
                     <td>
                         <select className="form-control">
                             <option value="-1">Tất Cả</option>
@@ -29,9 +34,9 @@ class TaskList extends Component {
                     </td>
                     <td></td>
                 </tr>
-               <TaskItem/>
-               <TaskItem/>
-               <TaskItem/>
+                {
+                    elementTasks
+                }
             </tbody>
         </table>
     </div>
